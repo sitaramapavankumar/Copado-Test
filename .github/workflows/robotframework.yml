@@ -29,7 +29,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install robotframework
-          pip install robotframework-qweb
+          pip install git+https://github.com/your-org/robotframework-qweb.git
 
       # 4️⃣ Install Chrome + Chromedriver
       - name: Install Google Chrome and Chromedriver
