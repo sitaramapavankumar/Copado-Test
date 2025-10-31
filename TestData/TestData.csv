@@ -1,0 +1,127 @@
+TestCaseName;Profileuser;Contact;salesorderID;ApprovalStatus;Value;user
+INT_PS-CSSUser_Approve_Replacement-FOC(T10);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_PS-CSS
+INT_PS-CSSUser_Reject_Replacement-FOC(T10);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_PS-CSS
+INT_PS-CSSUser_Approve_Debit Memo Request(T11);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_PS-CSS
+INT_PS-CSSUser_Reject_Debit Memo Request(T11);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_PS-CSS
+INT_PS-CSSUser_Approve_Returns-Credit(T12);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_PS-CSS
+INT_PS-CSSUser_Reject_Returns-Credit(T12);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_PS-CSS
+INT_PS-CSSUser_Approve_Returns-No Credit(T13);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_PS-CSS
+INT_PS-CSSUser_Reject_Returns-No Credit(T13);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_PS-CSS
+INT_PS-CSSUser_Approve_Replacement-Charge(T14);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_PS-CSS
+INT_PS-CSSUser_Reject_Replacement-Charge(T14);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_PS-CSS
+INT_PS-CSSUser_Approve_Partial Credit Memo Request(T15);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_PS-CSS
+INT_PS-CSSUser_Reject_Partial Credit Memo Request(T15);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_PS-CSS
+INT_PS-CSSUser_Approve_Credit and Debit(T16);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_PS-CSS
+INT_PS-CSSUser_Reject_Credit and Debit(T16);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_PS-CSS
+INT_PS-CSSUser_Approve_Partial Debit Memo Request(T17);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_PS-CSS
+INT_PS-CSSUser_Reject_Partial Debit Memo Request(T17);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_PS-CSS
+INT_PS-CSSUser_Approve_Credit Memo Request(T18);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_PS-CSS
+INT_PS-CSSUser_Reject_Credit Memo Request(T18);itas_r2r_PS-CSS User;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_PS-CSS
+INT_R&A Export - Support_Approve_Replacement-FOC(T10);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_R&AExport
+INT_R&A Export - Support_Reject_Replacement-FOC(T10);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_R&AExport
+INT_R&A Export - Support_Approve_Debit Memo Request(T11);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_R&AExport
+INT_R&A Export - Support_Reject_Debit Memo Request(T11);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_R&AExport
+INT_R&A Export - Support_Approve_Returns-Credit(T12);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_R&AExport
+INT_R&A Export - Support_Reject_Returns-Credit(T12);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_R&AExport
+INT_R&A Export - Support_Approve_Returns-No Credit(T13);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_R&AExport
+INT_R&A Export - Support_Reject_Returns-No Credit(T13);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_R&AExport
+INT_R&A Export - Support_Approve_Replacement-Charge(T14);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_R&AExport
+INT_R&A Export - Support_Reject_Replacement-Charge(T14);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_R&AExport
+INT_R&A Export - Support_Approve_Partial Credit Memo Request(T15);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_R&AExport
+INT_R&A Export - Support_Reject_Partial Credit Memo Request(T15);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_R&AExport
+INT_R&A Export - Support_Approve_Credit and Debit(T16);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_R&AExport
+INT_R&A Export - Support_Reject_Credit and Debit(T16);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_R&AExport
+INT_R&A Export - Support_Approve_Partial Debit Memo Request(T17);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_R&AExport
+INT_R&A Export - Support_Reject_Partial Debit Memo Request(T17);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_R&AExport
+INT_R&A Export - Support_Approve_Credit Memo Request(T18);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_R&AExport
+INT_R&A Export - Support_Reject_Credit Memo Request(T18);itas_r2r_R&A Export - Support;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_R&AExport
+INT_R&A WE - Commercial Support_Approve_Replacement-FOC(T10);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Reject_Replacement-FOC(T10);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Approve_Debit Memo Request(T11);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Reject_Debit Memo Request(T11);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Approve_Returns-Credit(T12);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Reject_Returns-Credit(T12);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Approve_Returns-No Credit(T13);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Reject_Returns-No Credit(T13);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Approve_Replacement-Charge(T14);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Reject_Replacement-Charge(T14);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Approve_Partial Credit Memo Request(T15);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Reject_Partial Credit Memo Request(T15);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Approve_Credit and Debit(T16);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Reject_Credit and Debit(T16);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Approve_Partial Debit Memo Request(T17);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Reject_Partial Debit Memo Request(T17);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Approve_Credit Memo Request(T18);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_R&AWECommercial
+INT_R&A WE - Commercial Support_Reject_Credit Memo Request(T18);itas_r2r_R&A WE - Commercial Support;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_R&AWECommercial
+INT_R&A WE - Customer Service_Approve_Replacement-FOC(T10);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Reject_Replacement-FOC(T10);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Approve_Debit Memo Request(T11);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Reject_Debit Memo Request(T11);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Approve_Returns-Credit(T12);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Reject_Returns-Credit(T12);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Approve_Returns-No Credit(T13);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Reject_Returns-No Credit(T13);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Approve_Replacement-Charge(T14);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Reject_Replacement-Charge(T14);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Approve_Partial Credit Memo Request(T15);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Reject_Partial Credit Memo Request(T15);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Approve_Credit and Debit(T16);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Reject_Credit and Debit(T16);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Approve_Partial Debit Memo Request(T17);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Reject_Partial Debit Memo Request(T17);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Approve_Credit Memo Request(T18);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_R&AWECustomer
+INT_R&A WE - Customer Service_Reject_Credit Memo Request(T18);itas_r2r_R&A WE - Customer Service;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_R&AWECustomer
+INT_Research EMEA - SVMX-MM - Super User_Approve_Replacement-FOC(T10);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Reject_Replacement-FOC(T10);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Approve_Debit Memo Request(T11);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Reject_Debit Memo Request(T11);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Approve_Returns-Credit(T12);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Reject_Returns-Credit(T12);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Approve_Returns-No Credit(T13);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Reject_Returns-No Credit(T13);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Approve_Replacement-Charge(T14);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Reject_Replacement-Charge(T14);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Approve_Partial Credit Memo Request(T15);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Reject_Partial Credit Memo Request(T15);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Approve_Credit and Debit(T16);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Reject_Credit and Debit(T16);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Approve_Partial Debit Memo Request(T17);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Reject_Partial Debit Memo Request(T17);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Approve_Credit Memo Request(T18);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - SVMX-MM - Super User_Reject_Credit Memo Request(T18);itas_r2r_Research EMEA - SVMX-MM - Super User;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_ResearchEMEASVMX
+INT_Research EMEA - Sales.Service RU_Approve_Replacement-FOC(T10);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Reject_Replacement-FOC(T10);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Approve_Debit Memo Request(T11);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Reject_Debit Memo Request(T11);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Approve_Returns-Credit(T12);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Reject_Returns-Credit(T12);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Approve_Returns-No Credit(T13);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Reject_Returns-No Credit(T13);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Approve_Replacement-Charge(T14);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Reject_Replacement-Charge(T14);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Approve_Partial Credit Memo Request(T15);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Reject_Partial Credit Memo Request(T15);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Approve_Credit and Debit(T16);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Reject_Credit and Debit(T16);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Approve_Partial Debit Memo Request(T17);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Reject_Partial Debit Memo Request(T17);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Approve_Credit Memo Request(T18);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales.Service RU_Reject_Credit Memo Request(T18);itas_r2r_Research EMEA - Sales/Service RU;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_ResearchEMEASales/Service
+INT_Research EMEA - Sales_Approve_Replacement-FOC(T10);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Reject_Replacement-FOC(T10);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Replacement - FOC;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Approve_Debit Memo Request(T11);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Reject_Debit Memo Request(T11);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Debit Memo Request;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Approve_Returns-Credit(T12);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Reject_Returns-Credit(T12);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Returns - Credit;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Approve_Returns-No Credit(T13);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Reject_Returns-No Credit(T13);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Return - No Credit;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Approve_Replacement-Charge(T14);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Reject_Replacement-Charge(T14);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Replacement - Charge;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Approve_Partial Credit Memo Request(T15);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Reject_Partial Credit Memo Request(T15);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Partial Credit Memo Request;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Approve_Credit and Debit(T16);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Reject_Credit and Debit(T16);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Approve_Partial Debit Memo Request(T17);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Reject_Partial Debit Memo Request(T17);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Partial Debit Memo Request;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Approve_Credit Memo Request(T18);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_EMEAResearchSales
+INT_Research EMEA - Sales_Reject_Credit Memo Request(T18);itas_r2r_EMEA Research - Sales;Dinesh Ramakrishn;3000009077;Approve;Credit Memo Request;itas_r2r_EMEAResearchSales
