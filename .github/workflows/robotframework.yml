@@ -47,7 +47,7 @@ jobs:
 
       # 5️⃣ Run Robot Framework QWeb tests (headless)
       - name: Run QWeb Robot Framework Tests
-        run: |
+        run: test
           xvfb-run robot -d results tests/
 
       # 6️⃣ Upload the test results (log.html, report.html)
