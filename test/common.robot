@@ -5,12 +5,11 @@ Library                         QWeb            #screenshot_on_fail=False
 Library                         String
 Library                         Collections
 Library                         XML
-Library                         Process
+#Variables                         ${CURDIR}/../browser1.py
 Variables                       ${CURDIR}/../CommonTestData.py
 
 *** Variables ***
 ${FileName}                     ${CURDIR}/TestData/TestData.csv
-${environment}
 @{TestdataList}
 ${TestCaseName}
 ${Url}
@@ -31,7 +30,6 @@ ${SalesandService}              Service
 ${Sales}                        Sales
 ${SuperUser}                    Super User
 ${Customer}                     Customer
-${CHROMEDRIVER_PATH}            drivers/chromedriver-win64/chromedriver.exe
 
 *** Keywords ***
 Fetching TestData
@@ -61,16 +59,10 @@ Fetching TestData
     RETURN                    ${TestdataList}
 
 Test startup
-    Run Python Script
-    File Should Exist    ${CHROMEDRIVER_PATH}
-    Open Browser                about:blank    Chrome    executable_path=${CHROMEDRIVER_PATH}
+    OpenBrowser                about:blank                 chrome    headless=True     #options=--version 110    #Chrome=110    browser_alias= chrome    #headless=True  width=1920    height=1200   #options=--disable-extensions          headless=True  width=1920    height=1200
     SetConfig                   LineBreak                   ${EMPTY}                    #\ue000
     SetConfig                   DefaultTimeout              60s
     Set Variables
-
-Run Python Script
-    [Documentation]             Execute the Python script to download ChromeDriver
-    Run Process    python    automate_robot_tests.py
 
 Set Variables
     [Documentation]             Set dynamic suite variables
@@ -79,19 +71,11 @@ Set Variables
 
 LoginToSalesforce
     [Documentation]             Login to Salesforce instance
-    #IF                            '${environment}'== 'Uat'
-        GoTo                        ${TestData_Uat.Url}
-    #    TypeText                    Username                    ${TestData_Uat.Username}                 delay=1
-    #    TypeText                    Password                    ${TestData_Uat.Password}
-    #ELSE
-    #    GoTo                        ${TestData_Preprod.Url}
-    #    TypeText                    Username                    ${TestData_Preprod.Username}                 delay=1
-    #    TypeText                    Password                    ${TestData_Preprod.Password}
-    #END
-    #ClickText                   Log In to Sandbox
-    #Sleep                       7s
-    Click Text                  Log in with
-    Sleep                       4s
+    GoTo                        ${TestData_Uat.Url}
+    TypeText                    Username                    ${TestData_Uat.Username}                 delay=1
+    TypeText                    Password                    ${TestData_Uat.Password}
+    ClickText                   Log In to Sandbox
+    Sleep                       7s
     #ClickText                   App Launcher
     #ClickText                   Search apps and items...
     #TypeText                    Search apps and items...    Process Solutions
@@ -154,26 +138,24 @@ Create Complaint
     TypeText                    Subject                     price
     log to console              After Entering the Subject
     Sleep                       4s
-    Click Element               //label[text()\='Business']
-    Click Text                  PS India
-    ClickText                   *Order Reason
+    ClickText                   Order Reason
     ScrollTo                    103_Quantity Discrepancy
     ClickText                   103_Quantity Discrepancy
     Sleep                       4s
     #Filling the complaint details form-Subject,Order Reason,Main Complaint area,Contact Name,TW Problem Category and code,Description
-    TypeText                    *Contact Name               ${Contact}                  timeout=10s
+    TypeText                    (//input[@placeholder\="Search Contacts..."])[2]               ${Contact}                  timeout=10s
     ClickText                   Show more results
     Sleep                       3s
     Click Element               //span[@class\='slds-radio_faux']
     Click Element               //button[text()\='Select']
     sleep                       2
-    Clicktext                   *TW Problem Category
+    ClickElement                //*[contains(text(),"TW Problem Category")]//following-sibling::div[@class\='slds-form-element__control']//button[@class\='slds-combobox__input slds-input_faux fix-slds-input_faux slds-combobox__input-value']
     sleep                       3
     ClickText                   PRICE
     ClickText                   *Main Complaint Area / Defect Location
     ScrollTo                    CARR - Carrier
     ClickText                   CARR - Carrier
-    Clicktext                   *TW Problem Code
+    ClickElement                //*[contains(text(),"TW Problem Code")]//following-sibling::div[@class\='slds-form-element__control']//button[@class\='slds-combobox__input slds-input_faux fix-slds-input_faux slds-combobox__input-value']
     ClickText                   Price Discrepancy
     TypeText                    *Description                 price
     ClickText                   Save                        partial_match=false
@@ -185,7 +167,6 @@ Create Request
     VerifyText                  Action Type
     DropDown                    --None--                    ${Value}                    anchor=Action Type          timeout=25s
     TypeText                    (//input[@class\='slds-input'])[3]                   4567
-    Execute Javascript          document.body.style.zoom='0.8'
     ClickText                   Extend Item
     Sleep                       3s
     SwipeUp
@@ -198,7 +179,7 @@ Create a request for Credit and Debit
     TypeText                    (//input[@class\='slds-input'])[3]                    4567
     ClickText                   Extend Item
     Uncheck Request Items
-    DropDown                    --None--                    Debit Memo Request          anchor=Action Type         timeout=25s
+    DropDown                    --None--                    Debit Memo Request          anchor=Action Type          timeout=25s
     ClickText                   Extend Item
     Sleep                       3s
     SwipeUp
@@ -216,14 +197,11 @@ Submit Approval Request
     VerifyText                  First Level Approver        timeout=40s
     TypeText                    First Level Approver        ${user}                     timeout=60s
     ClickText                   First Level Approver
-    Sleep                       3s
-    Hover Text                  Submit for Approval
-    Click Text                  Submit for Approval
-    Sleep                       5s
-    #ClickUntil                  Approval Request Submitted                              Submit for Approval         timeout=100s
+    ClickUntil                  Approval Request Submitted                              Submit for Approval         timeout=100s
 
 Approval Approve
     #Approve the Complaint
+    #ClickText                  Approve                     index=1                     anchor=Actual Approver
     ClickText                   //div[@title\='Approve']
     Sleep                       6s
     TypeText                    Comments                    approved
