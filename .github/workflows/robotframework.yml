@@ -1,0 +1,72 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Run Robot Framework QWeb Tests
+
+on:
+  push:
+    branches: [ main ]      # runs on push to 'main'
+  pull_request:
+    branches: [ main ]      # runs on pull requests to 'main'
+
+jobs:
+  run-qweb-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout your code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      # Cache pip packages
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      # Install dependencies
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install robotframework robotframework-seleniumlibrary pyautogui QWeb
+
+      # Cache Google Chrome (optional) and install system packages
+      - name: Install system packages and Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget gnupg unzip xvfb scrot
+          # Install Chrome only if not installed
+          if ! command -v google-chrome &> /dev/null; then
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/google-linux-keyring.gpg
+            echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+          fi
+
+      # Start Xvfb
+      - name: Start Xvfb
+        run: |
+          Xvfb :99 -screen 0 1920x1080x24 &
+          export DISPLAY=:99
+
+      # Run Robot Framework tests
+      - name: Run Robot Framework tests
+        run: |
+          mkdir -p reports
+          robot --outputdir reports test/
+
+      # 6️⃣ Upload the test results (log.html, report.html)
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: qweb-results
+          path: results/
