@@ -71,6 +71,3 @@ jobs:
         with:
           name: qweb-results
           path: results/
-        with:
-          name: robot-reports
-          path: reports
