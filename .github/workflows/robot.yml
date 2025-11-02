@@ -30,7 +30,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      # 4️⃣ Install Python dependencies
+      # 4️⃣ Install dependencies
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
@@ -38,67 +38,21 @@ jobs:
           pip install robotframework
           pip install robotframework-seleniumlibrary
           pip install QWeb pyautogui
-        shell: powershell
 
-      # 5️⃣ Install latest Google Chrome
-      - name: Install latest Google Chrome
+      # 5️⃣ Install Google Chrome
+      - name: Install Google Chrome
         run: |
           choco install googlechrome --no-progress --yes
         shell: powershell
 
-      # 6️⃣ Install matching ChromeDriver (auto-detect version, with fallback)
-      - name: Install matching ChromeDriver
-        shell: pwsh
-        run: |
-          $chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
-          $chromeVersion = (Get-Item $chromePath).VersionInfo.ProductVersion
-          Write-Host "Detected Chrome version: $chromeVersion"
-
-          $majorVersion = [int]($chromeVersion.Split('.')[0])
-          Write-Host "Detected major version: $majorVersion"
-
-          # Fetch Chrome for Testing JSON
-          $json = Invoke-RestMethod "https://googlechromelabs.github.io/chrome-for-testing/latest-versions-per-milestone-with-downloads.json"
-
-          # Try to get matching milestone, or closest previous one
-          $milestone = $null
-          if ($json.milestones.ContainsKey("$majorVersion")) {
-              $milestone = $json.milestones["$majorVersion"]
-          } else {
-              Write-Warning "Milestone $majorVersion not found — finding closest available..."
-              $available = $json.milestones.Keys | Sort-Object {[int]$_} -Descending
-              $closest = ($available | Where-Object { [int]$_ -lt $majorVersion } | Select-Object -First 1)
-              if ($closest) {
-                  $milestone = $json.milestones["$closest"]
-                  Write-Host "Using closest available milestone: $closest"
-              } else {
-                  throw "Could not find any valid milestone for ChromeDriver."
-              }
-          }
-
-          $driverVersion = $milestone.version
-          $driverUrl = ($milestone.downloads.chromedriver | Where-Object { $_.platform -eq "win64" }).url
-
-          if (-not $driverUrl) {
-              throw "Could not find ChromeDriver download URL for milestone $majorVersion"
-          }
-
-          Write-Host "Downloading ChromeDriver version $driverVersion from $driverUrl"
-          Invoke-WebRequest $driverUrl -OutFile "chromedriver.zip"
-          Expand-Archive chromedriver.zip -DestinationPath "C:\chromedriver" -Force
-          $env:Path += ";C:\chromedriver\chromedriver-win64"
-          Write-Host "✅ ChromeDriver $driverVersion installed and added to PATH."
-
-
-
-      # 7️⃣ Run Robot Framework tests
+      # 6️⃣ Run Robot Framework tests
       - name: Run Robot Framework tests
         run: |
           mkdir reports
           robot --outputdir reports test/
         shell: powershell
 
-      # 8️⃣ Upload test results
+      # 7️⃣ Upload test results
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
         with:
