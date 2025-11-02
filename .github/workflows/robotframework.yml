@@ -21,26 +21,34 @@ jobs:
         with:
           python-version: 3.11
 
-      # Upgrade pip and install the local wheel
-      - name: Install dependencies
+      # Cache pip packages
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      # Install dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install ./libs/qweb-3.6.1-py3-none-any.whl
           pip install robotframework robotframework-seleniumlibrary pyautogui QWeb
 
-      # Install system packages
-      - name: Install system packages
+      # Cache Google Chrome (optional) and install system packages
+      - name: Install system packages and Chrome
         run: |
           sudo apt-get update
           sudo apt-get install -y wget gnupg unzip xvfb scrot
-
-      # Install Google Chrome
-      - name: Install Google Chrome
-        run: |
-          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/google-linux-keyring.gpg
-          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
+          # Install Chrome only if not installed
+          if ! command -v google-chrome &> /dev/null; then
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/google-linux-keyring.gpg
+            echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
+          fi
 
       # Start Xvfb
       - name: Start Xvfb
