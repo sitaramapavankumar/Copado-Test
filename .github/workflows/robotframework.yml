@@ -54,15 +54,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
-      # Start Xvfb
-      - name: Start Xvfb
+      - name: Run Robot Framework tests
         run: |
           Xvfb :99 -screen 0 1920x1080x24 &
           export DISPLAY=:99
-
-      # Run Robot Framework tests
-      - name: Run Robot Framework tests
-        run: |
+          sleep 3
           mkdir -p reports
           robot --outputdir reports test/
 
