@@ -36,7 +36,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install ./libs/qweb-3.6.1-py3-none-any.whl
           pip install robotframework
-          pip install robotframework-seleniumlibrary
+          
           pip install QWeb pyautogui
 
       # 5️⃣ Install Google Chrome
