@@ -30,29 +30,53 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      # 4️⃣ Install dependencies
+      # 4️⃣ Install Python dependencies
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install ./libs/qweb-3.6.1-py3-none-any.whl
           pip install robotframework
-          
+          pip install robotframework-seleniumlibrary
           pip install QWeb pyautogui
+        shell: powershell
 
-      # 5️⃣ Install Google Chrome
-      - name: Install Google Chrome
+      # 5️⃣ Install latest Google Chrome
+      - name: Install latest Google Chrome
         run: |
           choco install googlechrome --no-progress --yes
         shell: powershell
 
-      # 6️⃣ Run Robot Framework tests
+      # 6️⃣ Install matching ChromeDriver (auto-detect version)
+      - name: Install matching ChromeDriver
+        run: |
+          $chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
+          $chromeVersion = (Get-Item $chromePath).VersionInfo.ProductVersion
+          Write-Host "Detected Chrome version: $chromeVersion"
+
+          $majorVersion = $chromeVersion.Split('.')[0]
+          Write-Host "Detected major version: $majorVersion"
+
+          # Fetch Chrome for Testing data (official JSON)
+          $json = Invoke-RestMethod "https://googlechromelabs.github.io/chrome-for-testing/latest-patch-versions-per-build-with-downloads.json"
+          $driverData = $json.builds."$majorVersion"
+          $driverVersion = $driverData.version
+          $driverUrl = ($driverData.downloads.chromedriver | Where-Object { $_.platform -eq "win64" }).url
+
+          Write-Host "Downloading ChromeDriver version $driverVersion from $driverUrl"
+          Invoke-WebRequest $driverUrl -OutFile "chromedriver.zip"
+          Expand-Archive chromedriver.zip -DestinationPath "C:\chromedriver" -Force
+          $env:Path += ";C:\chromedriver\chromedriver-win64"
+          Write-Host "✅ ChromeDriver installed and added to PATH."
+        shell: powershell
+
+      # 7️⃣ Run Robot Framework tests
       - name: Run Robot Framework tests
         run: |
           mkdir reports
           robot --outputdir reports test/
         shell: powershell
 
-      # 7️⃣ Upload test results
+      # 8️⃣ Upload test results
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
         with:
