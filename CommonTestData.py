@@ -1,7 +1,7 @@
 class TestData_Uat():
     Url = 'https://maestro--uat.sandbox.lightning.force.com'
     Username = 'it-as@merckgroup.com.uat'
-    Password = 'SalesUAT@20252'
+    Password = 'SalesUAT@20254'
 
 
 class TestData_Preprod():
