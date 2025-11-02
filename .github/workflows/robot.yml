@@ -46,7 +46,7 @@ jobs:
           choco install googlechrome --no-progress --yes
         shell: powershell
 
-            # 6️⃣ Install matching ChromeDriver (auto-detect version)
+      # 6️⃣ Install matching ChromeDriver (auto-detect version, with fallback)
       - name: Install matching ChromeDriver
         shell: pwsh
         run: |
@@ -54,23 +54,33 @@ jobs:
           $chromeVersion = (Get-Item $chromePath).VersionInfo.ProductVersion
           Write-Host "Detected Chrome version: $chromeVersion"
 
-          $majorVersion = $chromeVersion.Split('.')[0]
+          $majorVersion = [int]($chromeVersion.Split('.')[0])
           Write-Host "Detected major version: $majorVersion"
 
-          # Fetch latest patch version info from Google
+          # Fetch Chrome for Testing JSON
           $json = Invoke-RestMethod "https://googlechromelabs.github.io/chrome-for-testing/latest-versions-per-milestone-with-downloads.json"
 
-          # Find matching milestone for Windows 64-bit
-          $milestone = $json.milestones["$majorVersion"]
-          if (-not $milestone) {
-              throw "No milestone found for Chrome major version $majorVersion"
+          # Try to get matching milestone, or closest previous one
+          $milestone = $null
+          if ($json.milestones.ContainsKey("$majorVersion")) {
+              $milestone = $json.milestones["$majorVersion"]
+          } else {
+              Write-Warning "Milestone $majorVersion not found — finding closest available..."
+              $available = $json.milestones.Keys | Sort-Object {[int]$_} -Descending
+              $closest = ($available | Where-Object { [int]$_ -lt $majorVersion } | Select-Object -First 1)
+              if ($closest) {
+                  $milestone = $json.milestones["$closest"]
+                  Write-Host "Using closest available milestone: $closest"
+              } else {
+                  throw "Could not find any valid milestone for ChromeDriver."
+              }
           }
 
           $driverVersion = $milestone.version
           $driverUrl = ($milestone.downloads.chromedriver | Where-Object { $_.platform -eq "win64" }).url
 
           if (-not $driverUrl) {
-              throw "Could not find ChromeDriver download URL for Chrome $majorVersion"
+              throw "Could not find ChromeDriver download URL for milestone $majorVersion"
           }
 
           Write-Host "Downloading ChromeDriver version $driverVersion from $driverUrl"
@@ -78,6 +88,7 @@ jobs:
           Expand-Archive chromedriver.zip -DestinationPath "C:\chromedriver" -Force
           $env:Path += ";C:\chromedriver\chromedriver-win64"
           Write-Host "✅ ChromeDriver $driverVersion installed and added to PATH."
+
 
 
       # 7️⃣ Run Robot Framework tests
