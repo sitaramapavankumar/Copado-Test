@@ -72,9 +72,7 @@ Set Variables
 LoginToSalesforce
     [Documentation]             Login to Salesforce instance
     GoTo                        ${TestData_Uat.Url}
-    TypeText                    Username                    ${TestData_Uat.Username}                 delay=1
-    TypeText                    Password                    ${TestData_Uat.Password}
-    ClickText                   Log In to Sandbox
+    ClickText                    Log in with
     Sleep                       7s
     #ClickText                   App Launcher
     #ClickText                   Search apps and items...
