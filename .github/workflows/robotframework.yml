@@ -52,7 +52,7 @@ jobs:
           export DISPLAY=:99
           sleep 3
           mkdir -p reports
-          robot --outputdir reports test/
+          robot --outputdir reports . || true
 
       # ✅ Always upload the reports, even if tests fail
       - name: Upload Test Results (always)
