@@ -57,6 +57,7 @@ jobs:
 
             echo "🧹 Cleaning up temporary output2.xml..."
             rm -f saved-reports/output2.xml
+            rm -rf saved-reports/screenshots
           else
             echo "✅ No failed tests found — skipping rerun."
           fi
