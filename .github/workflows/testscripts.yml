@@ -50,35 +50,30 @@ jobs:
         id: prepare-tests
         run: |
           echo "Reading test_scripts.txt ..."
-          # Filter out comments (#) and empty lines
+          # Filter out comment lines (#) and empty lines
           TESTCASES=$(grep -vE '^\s*#' test_scripts.txt | grep -vE '^\s*$' || true)
-            
+
           if [ -z "$TESTCASES" ]; then
             echo "❌ No test cases found to run!"
             exit 1
           fi
-            
+
           echo "Test cases to run:"
           echo "$TESTCASES"
-            
-            # Save as GitHub Actions variable for next step
-          echo "TESTCASES<<EOF" >> $GITHUB_ENV
-          echo "$TESTCASES" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
 
-      - name: Run Robot Framework tests
+          # Convert multi-line list into space-separated paths for robot
+          TESTCASES=$(echo "$TESTCASES" | xargs)
+          echo "TESTCASES=$TESTCASES" >> $GITHUB_ENV
+
+      - name: Run Robot Framework tests (combined report)
         run: |
           Xvfb :99 -screen 0 1920x1080x24 &
           export DISPLAY=:99
           sleep 3
-          mkdir -p reports                
-          echo "Running selected Robot Framework tests..."
-          echo "$TESTCASES" | while read -r testcase; do
-           if [ -n "$testcase" ]; then
-              echo "▶ Running: $testcase"
-              robot --outputdir reports "$testcase" || true
-           fi
-          done
+          mkdir -p reports
+
+          echo "▶ Running Robot Framework tests as one suite..."
+          robot --outputdir reports $TESTCASES || true
 
       - name: Upload Test Results (always)
         if: always()
@@ -87,7 +82,6 @@ jobs:
           name: qweb-results
           path: reports/
 
-      # ✅ Optional: Commit the reports to a specific folder in the repo
       - name: Save reports to repo folder
         if: always()
         run: |
@@ -95,8 +89,8 @@ jobs:
           cp -r reports/* saved-reports/
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add saved-reports
-          git commit -m "Add test reports from workflow run"
+          git add saved-reports || true
+          git commit -m "Add combined test reports from workflow run" || true
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
