@@ -53,21 +53,13 @@ jobs:
           echo "🔁 Checking for failed tests..."
           if grep -q 'status="FAIL"' saved-reports/output.xml; then
             echo "⚠️ Found failed tests — rerunning only failed cases..."
-            robot --rerunfailed saved-reports/output.xml --output saved-reports/output2.xml . || true
+            robot --rerunfailed saved-reports/output.xml --output saved-reports/output2.xml . || true;
 
             echo "🔗 Merging rerun results back into original output.xml..."
-            rebot --output saved-reports/output.xml --report saved-reports/report.html --log saved-reports/log.html --merge saved-reports/output*.xml || true
+            rebot --output saved-reports/output.xml --merge saved-reports/output*.xml || true;
 
             echo "🧹 Cleaning up temporary output2.xml..."
             rm -f saved-reports/output2.xml
-
-            echo "🧹 Removing screenshots folder..."
-            if [ -d "saved-reports/screenshots" ]; then
-              rm -rf saved-reports/screenshots
-              echo "🗑️ Deleted saved-reports/screenshots folder."
-            else
-              echo "ℹ️ No screenshots folder found to delete."
-            fi
           else
             echo "✅ No failed tests found — skipping rerun."
           fi
