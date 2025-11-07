@@ -1,7 +1,10 @@
 name: Rerun Only Failed Robot Tests and Merge Reports
 
 on:
-  workflow_dispatch:  # manual trigger from GitHub Actions tab
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 permissions:
   contents: write
