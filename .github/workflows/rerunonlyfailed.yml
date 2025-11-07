@@ -1,0 +1,73 @@
+name: Rerun Failed Robot Tests and Merge Reports
+
+on:
+  workflow_dispatch:  # Run manually or you can use 'push'/'schedule' if desired
+
+permissions:
+  contents: write
+
+jobs:
+  rerun-failed-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ./libs/qweb-3.6.1-py3-none-any.whl
+          sudo apt-get update && sudo apt-get install -y wget gnupg unzip xvfb scrot
+          pip install robotframework robotframework-seleniumlibrary QWeb pyautogui
+
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget gnupg unzip xvfb scrot
+          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/google-linux-keyring.gpg
+          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list > /dev/null
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Rerun failed Robot Framework tests from saved-reports
+        run: |
+          Xvfb :99 -screen 0 1920x1080x24 &
+          export DISPLAY=:99
+          sleep 3
+
+          echo "▶️ Checking for previous output.xml in saved-reports..."
+          if [ ! -f saved-reports/output.xml ]; then
+            echo "❌ No previous output.xml found in saved-reports/"
+            exit 1
+          fi
+
+          echo "🔁 Checking for failed tests..."
+          if grep -q 'status="FAIL"' saved-reports/output.xml; then
+            echo "⚠️ Found failed tests — rerunning only failed cases..."
+            robot --rerunfailed saved-reports/output.xml --output saved-reports/output2.xml .
+
+            echo "🔗 Merging rerun results back into original output.xml..."
+            rebot --output saved-reports/output.xml --merge saved-reports/output*.xml
+
+            echo "🧹 Cleaning up temporary output2.xml..."
+            rm -f saved-reports/output2.xml
+          else
+            echo "✅ No failed tests found — skipping rerun."
+          fi
+
+      - name: Commit updated merged reports back to repository
+        if: always()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add saved-reports/output.xml
+          git commit -m "Merged rerun results into saved-reports/output.xml" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
