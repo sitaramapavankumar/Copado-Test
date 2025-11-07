@@ -56,7 +56,10 @@ jobs:
             robot --rerunfailed saved-reports/output.xml --output saved-reports/output2.xml . || true;
 
             echo "🔗 Merging rerun results back into original output.xml..."
-            rebot --output saved-reports/output.xml --merge saved-reports/output*.xml || true;
+            rebot --output saved-reports/output.xml \
+                  --log saved-reports/log.html \
+                  --report saved-reports/report.html \
+                  --merge saved-reports/output*.xml || true;
 
             echo "🧹 Cleaning up temporary output2.xml..."
             rm -f saved-reports/output2.xml
