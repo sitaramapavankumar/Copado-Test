@@ -64,6 +64,7 @@ jobs:
             rebot --output saved-reports/output.xml --report saved-reports/report.html --log saved-reports/log.html --merge saved-reports/output*.xml || true;
             echo "🧹 Cleaning up temporary output files..."
             rm -f reports/output2.xml
+            rm -f reports/screenshots
           else
             echo "✅ No failed tests found. Skipping rerun."
           fi
