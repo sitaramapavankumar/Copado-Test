@@ -1,7 +1,7 @@
-name: Rerun Failed Robot Tests and Merge Reports
+name: Rerun Only Failed Robot Tests and Merge Reports
 
 on:
-  workflow_dispatch:  # Run manually or you can use 'push'/'schedule' if desired
+  workflow_dispatch:  # manual trigger from GitHub Actions tab
 
 permissions:
   contents: write
@@ -35,7 +35,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
-      - name: Rerun failed Robot Framework tests from saved-reports
+      - name: Rerun failed Robot Framework tests
         run: |
           Xvfb :99 -screen 0 1920x1080x24 &
           export DISPLAY=:99
@@ -57,7 +57,14 @@ jobs:
 
             echo "🧹 Cleaning up temporary output2.xml..."
             rm -f saved-reports/output2.xml
-            rm -rf saved-reports/screenshots
+
+            echo "🧹 Removing screenshots folder..."
+            if [ -d "saved-reports/screenshots" ]; then
+              rm -rf saved-reports/screenshots
+              echo "🗑️ Deleted saved-reports/screenshots folder."
+            else
+              echo "ℹ️ No screenshots folder found to delete."
+            fi
           else
             echo "✅ No failed tests found — skipping rerun."
           fi
@@ -68,7 +75,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add saved-reports/output.xml
-          git commit -m "Merged rerun results into saved-reports/output.xml" || echo "No changes to commit"
+          git commit -m "Merged rerun results and cleaned screenshots folder" || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
