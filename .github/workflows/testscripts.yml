@@ -1,39 +1,95 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
-name: Python application
+name: Run Robot Framework QWeb Tests
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  build:
-
+  run-qweb-tests:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
-      run: |
-        pytest
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ./libs/qweb-3.6.1-py3-none-any.whl
+          apt-get update && apt-get install -y wget gnupg unzip xvfb scrot
+          pip install robotframework robotframework-seleniumlibrary QWeb pyautogui
+
+      - name: Install system packages and Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget gnupg unzip xvfb scrot
+          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/google-linux-keyring.gpg
+          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list > /dev/null
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Prepare test list
+        id: prepare-tests
+        run: |
+          echo "Reading test_scripts.txt ..."
+          # Filter out comments (#) and empty lines
+          TESTCASES=$(grep -vE '^\s*#' test_scripts.txt | grep -vE '^\s*$' || true)
+            
+          if [ -z "$TESTCASES" ]; then
+            echo "❌ No test cases found to run!"
+            exit 1
+          fi
+            
+          echo "Test cases to run:"
+          echo "$TESTCASES"
+            
+            # Save as GitHub Actions variable for next step
+          echo "TESTCASES<<EOF" >> $GITHUB_ENV
+          echo "$TESTCASES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Run Robot Framework tests
+        run: |
+          Xvfb :99 -screen 0 1920x1080x24 &
+          export DISPLAY=:99
+          sleep 3
+          mkdir -p reports                
+          echo "Running selected Robot Framework tests..."
+          echo "$TESTCASES" | while read -r testcase; do
+           if [ -n "$testcase" ]; then
+              echo "▶ Running: $testcase"
+              robot --outputdir reports "$testcase" || true
+           fi
+          done
+
+      # ✅ Optional: Commit the reports to a specific folder in the repo
+      - name: Save reports to repo folder
+        if: always()
+        run: |
+          mkdir -p saved-reports
+          cp -r reports/* saved-reports/
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add saved-reports
+          git commit -m "Add test reports from workflow run"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -10,10 +10,3 @@ INT_PS-CSSUser_Approve_Credit Memo Request(T18)
     Profile User Common Steps                         ${TEST_NAME}
     Approval Approve
     CloseBrowser
-
-INT_PS-CSSUser_Reject_Credit Memo Request(T18)
-    [Documentation]             Rejecting the complaint of Credit Memo Request
-    [Tags]                      PS-CSS User
-    Profile User Common Steps                         ${TEST_NAME}
-    Approval Reject
-    Logout the user

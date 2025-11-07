@@ -1,0 +1,4 @@
+ResearchEMEA-SalesandServiceRU/INT_ResearchEMEA-Sales.ServiceRU_CreditAndDebit.robot
+#ResearchEMEA-SalesandServiceRU/INT_ResearchEMEA-Sales.ServiceRU_CreditMemoRequest.robot
+#test/PS-CSSUser/INT_PS-CSSUser_CreditAndDebit.robot
+test/PS-CSSUser/INT_PS-CSSUser_CreditMemoRequest.robot

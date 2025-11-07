@@ -73,7 +73,7 @@ LoginToSalesforce
     [Documentation]             Login to Salesforce instance
     GoTo                        ${TestData_Uat.Url}
     ClickText                    Log in with
-    Sleep                       7s
+    Sleep                       1s
     #ClickText                   App Launcher
     #ClickText                   Search apps and items...
     #TypeText                    Search apps and items...    Process Solutions
