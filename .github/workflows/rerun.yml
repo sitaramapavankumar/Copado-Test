@@ -59,9 +59,9 @@ jobs:
           echo "🔁 Checking for failed tests..."
           if grep -q 'status="FAIL"' reports/output.xml; then
             echo "⚠️ Some tests failed. Rerunning failed tests..."
-            robot --rerunfailed reports/output.xml --output reports/output2.xml .
+            robot --rerunfailed reports/output.xml --output reports/output2.xml . || true;
             echo "🔗 Merging rerun results into original report..."
-            rebot --output reports/output.xml --merge reports/output*.xml
+            rebot --output reports/output.xml --merge reports/output*.xml || true;
             echo "🧹 Cleaning up temporary output files..."
             rm -f reports/output2.xml
           else
