@@ -80,6 +80,13 @@ jobs:
            fi
           done
 
+      - name: Upload Test Results (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qweb-results
+          path: reports/
+
       # ✅ Optional: Commit the reports to a specific folder in the repo
       - name: Save reports to repo folder
         if: always()
